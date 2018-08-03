@@ -9,7 +9,8 @@ module.exports = class BlockChain {
     constructor() {
         (async () => {
             this.currentHeight = (await this.getBlockHeight()) - 1;
-            this.addBlock(new Block("First block in the chain - Genesis block :)"));
+            if (this.currentHeight == -1)
+                this.addBlock(new Block("First block in the chain - Genesis block :)"));
         }).bind(this)();
     }
 
