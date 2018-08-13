@@ -1,0 +1,116 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a projet for my course of blockchain, if you need more information, please contact me [Linkedin](https://www.linkedin.com/in/edivan-teixeira-6b09b432/).",
+    "version": "1.0.0",
+    "title": "Swagger Blockchain",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "tags": [{
+    "name": "blockchain",
+    "description": "Interact with my private blockchain"
+  }],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/block": {
+      "post": {
+        "tags": [
+          "blockchain"
+        ],
+        "summary": "Add a new block to blockchain",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "description": "String data that you need put in new block",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/Body"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Block"
+            }
+          }
+        }
+      }
+    },
+    "/block/{blockHeight}": {
+      "get": {
+        "tags": [
+          "blockchain"
+        ],
+        "summary": "Get information about a block in blockchain",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [{
+          "name": "blockHeight",
+          "in": "path",
+          "description": "Height of block that you need",
+          "required": true,
+          "type": "integer",
+          "format": "int64"
+        }],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Block"
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "Body": {
+      "type": "object",
+      "properties": {
+        "body": {
+          "type": "string"
+        }
+      }
+    },
+    "Block": {
+      "type": "object",
+      "properties": {
+        "hash": {
+          "type": "string"
+        },
+        "height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "body": {
+          "type": "string"
+        },
+        "time": {
+          "type": "string"
+        },
+        "previousBlockHash": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

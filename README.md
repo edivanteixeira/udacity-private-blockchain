@@ -10,26 +10,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 Installing Node and NPM is pretty straightforward using the installer package available from the (Node.js® web site)[https://nodejs.org/en/].
 
-### Configuring your project
+### Running soluction
 
 - Use NPM to initialize your project and create package.json to store project dependencies.
 ```
 npm init
 ```
-- Install crypto-js with --save flag to save dependency to our package.json file
+- Install all dependency that have in our package.json file
 ```
-npm install crypto-js --save
+npm install 
 ```
-- Install level with --save flag
+- Running app in port 8000
 ```
-npm install level --save
+npm start
 ```
+- Before this, open a browser in [http://localhost:8000](http://localhost:8000) and enjoy :)
 
-## Testing
-
-To test code:
-To test code: 1: Open a command prompt or shell terminal after install node.js. 2: Enter the following command:
-
-```
-node Test.js
-```

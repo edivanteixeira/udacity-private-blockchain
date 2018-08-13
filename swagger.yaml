@@ -1,0 +1,83 @@
+swagger: "2.0"
+info:
+  description: "This is a projet for my course of blockchain, if you need more information, please contact me. [http://swagger.io](Linkedin)."
+  version: "1.0.0"
+  title: "Swagger Blockchain"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "localhost:8000"
+basePath: "/"
+tags:
+- name: "blockchain"
+  description: "Everything about your Pets"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "https"
+- "http"
+paths:
+  /block/{blockHeight}:
+    get:
+      tags:
+      - "blockchain"
+      summary: "Get information about a block in blockchain"
+      description: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: "blockHeight"
+        name: "blockHeight"
+        description: "Height of block you need"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Block"
+  /block:
+    post:
+      tags:
+      - "blockchain"
+      summary: "Add a new block to blockchain"
+      description: ""
+      operationId: "addPet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "String data that you need put in new block"
+        required: true
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Block"
+  
+
+definitions:
+  Block:
+    type: "object"
+    properties:
+      hash:
+        type: "string"
+      height:
+        type: "integer"
+        format: "int64"
+      body:
+        type: "string"
+      time:
+        type: "string"
+      previousBlockHash:
+        type: "string"
